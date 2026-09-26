@@ -33,6 +33,20 @@ trunk:
     cron: ${TRUNK_SYNC_CRON:0 0 7 * * *}
     zone: ${TRUNK_SYNC_ZONE:Asia/Tehran}
 
+cdp:
+  clickhouse:
+    url: ${CLICKHOUSE_URL:jdbc:ch:http://127.0.0.1:8123/cdr}
+    host: ${CLICKHOUSE_HOST:127.0.0.1}
+    port: ${CLICKHOUSE_PORT:8123}
+    database: ${CLICKHOUSE_DATABASE:cdr}
+    username: ${CLICKHOUSE_USERNAME:cdr}
+    password: ${CLICKHOUSE_PASSWORD:Ck123456}
+    driver-class-name: ${CLICKHOUSE_DRIVER:com.clickhouse.jdbc.ClickHouseDriver}
+
+  pagination:
+    default-page-size: ${CDP_API_DEFAULT_PAGE_SIZE:50}
+    max-page-size: ${CDP_API_MAX_PAGE_SIZE:1000}
+
 logging:
   level:
     com.fwutech.oss.cdpapi: INFO
