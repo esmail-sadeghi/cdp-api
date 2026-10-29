@@ -58,11 +58,10 @@ public class TrunkController {
         );
     }
 
-    @PostMapping("/sync")
-    public ResponseEntity<TrunkService.SyncResult> sync() {
-
-        return ResponseEntity.ok(
-                trunkService.syncTrunks()
-        );
-    }
+//    @PostMapping("/sync")
+//    public ResponseEntity<TrunkService.SyncResult> sync() {
+//        return ResponseEntity.ok(
+//                trunkService.syncTrunks()
+//        );
+//    }
 }

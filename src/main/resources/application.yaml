@@ -5,42 +5,38 @@ spring:
   application:
     name: cdp-api
   datasource:
-    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5433/appdb}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres123}
+    url: ${DB_URL:jdbc:postgresql://192.168.106.45:5432/cdp}
+    username: ${DB_USERNAME:cdp_app}
+    password: ${DB_PASSWORD:30Dp@Pp$Ti30}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      max-lifetime: 300000
+      idle-timeout: 120000
+      connection-timeout: 30000
+      validation-timeout: 5000
+  flyway:
+    enabled: false
+
   jpa:
     hibernate:
       ddl-auto: none
     open-in-view: false
     properties:
       hibernate:
+        default_schema: cdp_app
         jdbc:
           time_zone: UTC
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-    table: cdp_api_flyway_history
-    baseline-on-migrate: true
-    baseline-version: 0
-    baseline-description: "CDP API schema"
-
-oss-inventory:
-  base-url: ${OSS_INVENTORY_BASE_URL:https://192.168.96.154}
-
-trunk:
-  sync:
-    cron: ${TRUNK_SYNC_CRON:0 0 7 * * *}
-    zone: ${TRUNK_SYNC_ZONE:Asia/Tehran}
 
 cdp:
   clickhouse:
-    url: ${CLICKHOUSE_URL:jdbc:ch:http://127.0.0.1:8123/cdr}
-    host: ${CLICKHOUSE_HOST:127.0.0.1}
+    url: ${CLICKHOUSE_URL:jdbc:clickhouse://192.168.106.45:8123/cdp_repo}
+    host: ${CLICKHOUSE_HOST:192.168.106.45}
     port: ${CLICKHOUSE_PORT:8123}
-    database: ${CLICKHOUSE_DATABASE:cdr}
-    username: ${CLICKHOUSE_USERNAME:cdr}
-    password: ${CLICKHOUSE_PASSWORD:Ck123456}
+    database: ${CLICKHOUSE_DATABASE:cdp_repo}
+    username: ${CLICKHOUSE_USERNAME:cdp_repo}
+    password: ${CLICKHOUSE_PASSWORD:30Dp@Pp$Ti30}
     driver-class-name: ${CLICKHOUSE_DRIVER:com.clickhouse.jdbc.ClickHouseDriver}
 
   pagination:
